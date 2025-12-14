@@ -116,8 +116,8 @@ int main(void)
  800015e:	f44f 5180 	mov.w	r1, #4096	; 0x1000
  8000162:	4809      	ldr	r0, [pc, #36]	; (8000188 <main+0x3c>)
  8000164:	f000 fbfe 	bl	8000964 <HAL_GPIO_WritePin>
-	  HAL_Delay(500);
- 8000168:	f44f 70fa 	mov.w	r0, #500	; 0x1f4
+	  HAL_Delay(2000);
+ 8000168:	f44f 60fa 	mov.w	r0, #2000	; 0x7d0
  800016c:	f000 f978 	bl	8000460 <HAL_Delay>
 
 	  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, RESET);
@@ -125,8 +125,8 @@ int main(void)
  8000172:	f44f 5180 	mov.w	r1, #4096	; 0x1000
  8000176:	4804      	ldr	r0, [pc, #16]	; (8000188 <main+0x3c>)
  8000178:	f000 fbf4 	bl	8000964 <HAL_GPIO_WritePin>
-	  HAL_Delay(500);
- 800017c:	f44f 70fa 	mov.w	r0, #500	; 0x1f4
+	  HAL_Delay(2000);
+ 800017c:	f44f 60fa 	mov.w	r0, #2000	; 0x7d0
  8000180:	f000 f96e 	bl	8000460 <HAL_Delay>
 	  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, SET);
  8000184:	e7ea      	b.n	800015c <main+0x10>
