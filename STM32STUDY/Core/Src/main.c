@@ -31,6 +31,7 @@
 			GPIO_PIN_8, GPIO_PIN_9, GPIO_PIN_10,
 			GPIO_PIN_11, GPIO_PIN_12
 	};
+	uint8_t mode = 0;
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -101,18 +102,30 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_13) == 1){
-		  for(int i = 0; i < 8; i++){
-			  HAL_GPIO_WritePin(GPIOB, led_pins[i], SET);
+	 if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_13) == 1){
+		mode = 1;
+	 }
+	 if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_14) == 1){
+		 mode = 2;
+	 }
+	 switch(mode){
+		 case 1:
+			 for(int i = 0; i < 8; i++){
+				  HAL_GPIO_WritePin(GPIOB, led_pins[i], SET);
+				  HAL_Delay(500);
+			  }
+			  HAL_GPIO_WritePin(GPIOB, led_pins_all, RESET);
 			  HAL_Delay(500);
-		  }
-		  HAL_GPIO_WritePin(GPIOB, led_pins_all, RESET);
-		  HAL_Delay(500);
-	  }
-	  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_14) == 1){
-		  HAL_GPIO_TogglePin(GPIOB, led_pins_all);
-		  HAL_Delay(500);
-	  }
+			  mode = 0;
+			  break;
+		 case 2:
+			 HAL_GPIO_TogglePin(GPIOB, led_pins_all);
+			 HAL_Delay(500);
+			 break;
+		 /*default:
+			 HAL_GPIO_WritePin(GPIOB, led_pins_all, RESET);
+			 break;*/
+	 }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
