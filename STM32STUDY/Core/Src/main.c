@@ -22,7 +22,15 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+	uint16_t led_pins_all = (GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7|
+			GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10|
+			GPIO_PIN_11|GPIO_PIN_12
+			);
+	uint16_t led_pins[] = {
+			GPIO_PIN_5, GPIO_PIN_6, GPIO_PIN_7,
+			GPIO_PIN_8, GPIO_PIN_9, GPIO_PIN_10,
+			GPIO_PIN_11, GPIO_PIN_12
+	};
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -93,6 +101,18 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_13) == 1){
+		  for(int i = 0; i < 8; i++){
+			  HAL_GPIO_WritePin(GPIOB, led_pins[i], SET);
+			  HAL_Delay(500);
+		  }
+		  HAL_GPIO_WritePin(GPIOB, led_pins_all, RESET);
+		  HAL_Delay(500);
+	  }
+	  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_14) == 1){
+		  HAL_GPIO_TogglePin(GPIOB, led_pins_all);
+		  HAL_Delay(500);
+	  }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
