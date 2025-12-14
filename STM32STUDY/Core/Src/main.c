@@ -92,7 +92,12 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-
+	  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_13) == 1)
+	  {
+		  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, SET);
+	  } else {
+		  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, RESET);
+	  }
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
