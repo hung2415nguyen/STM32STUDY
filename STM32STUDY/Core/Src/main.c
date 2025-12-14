@@ -96,10 +96,10 @@ int main(void)
     /* USER CODE END WHILE */
 	  //Exercise 1
 	  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, SET);
-	  HAL_Delay(500);
+	  HAL_Delay(2000);
 
 	  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_12, RESET);
-	  HAL_Delay(500);
+	  HAL_Delay(2000);
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
